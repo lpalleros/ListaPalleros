@@ -37,11 +37,7 @@ export default function App() {
         <FlatList 
           data={itemList}
           renderItem={ data => (
-            <TouchableOpacity onPress={onHandleDelete.bind(this, data.item.id)}>  
-              <View key={data.item.id}>
-                <Card name={data.item.value}/>
-              </View>
-            </TouchableOpacity>
+            <Card data={data.item} key={data.item.id} onHandleDelete={onHandleDelete} />
           )}
           keyExtractor= {(item) => item.id}
         />
