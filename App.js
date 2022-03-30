@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput,FlatList } from 'react-native';
 import React ,{ useState } from 'react';
 
-import { Card } from './components';
+import { Card, Form } from './components';
 
 export default function App() {
   const [textItem, setTextItem] = useState('');
@@ -24,15 +24,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TextInput 
-        placeholder='item'
-        value={textItem}
-        onChangeText={onHandleChangeItem}
-      />
-      <Text>--------------------------</Text>
-      <TouchableOpacity onPress={add}>  
-        <Text>Enviar</Text>
-      </TouchableOpacity>
+      <Form onHandleChangeItem={onHandleChangeItem} add={add} textItem={textItem}/>
       <View>
         <FlatList 
           data={itemList}
