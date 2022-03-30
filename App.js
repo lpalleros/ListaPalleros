@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput,FlatList } from 'react-native';
 import React ,{ useState } from 'react';
 
+import { Card } from './components';
+
 export default function App() {
   const [textItem, setTextItem] = useState('');
   const [itemList,setItemList] = useState([]);
@@ -10,8 +12,6 @@ export default function App() {
   const add = () => {
     setCounter(counter + 1);
     setItemList((state) => [...state, { id: counter ,value: textItem}]);
-    console.log(textItem);
-    console.log(itemList);
   };
 
   const onHandleChangeItem = (t) => {
@@ -39,7 +39,7 @@ export default function App() {
           renderItem={ data => (
             <TouchableOpacity onPress={onHandleDelete.bind(this, data.item.id)}>  
               <View key={data.item.id}>
-                <Text>{data.item.id} - {data.item.value}</Text>
+                <Card name={data.item.value}/>
               </View>
             </TouchableOpacity>
           )}
@@ -53,9 +53,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 80,
+    marginTop: 80,
+    marginHorizontal: 20,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
 });
